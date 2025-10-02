@@ -1,22 +1,18 @@
-import { defineConfig, normalizePath } from "vite";
-import react from '@vitejs/plugin-react'
-import { viteStaticCopy } from "vite-plugin-static-copy"
-import path from "node:path";
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
-    react(),
-    viteStaticCopy({
-      targets: [
-        {
-          src: normalizePath(
-            path.resolve(__dirname, "node_modules/onnxruntime-web/dist") + "/*.wasm"
-          ),
-          dest: "./",
-        },
-      ],
+    react({
+      babel: {
+        plugins: [["babel-plugin-react-compiler"]],
+      },
     }),
   ],
-  base: '/yolo-model-benchmark-onnxruntime-web/',
-})
+  optimizeDeps: {
+    exclude: ["onnxruntime-web"],
+  },
+  assetsInclude: ["**/*.onnx"],
+  base: "/yolo-onnx-benchmark-web/",
+});

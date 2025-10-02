@@ -1,34 +1,368 @@
-#info-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-}
-#setting-container {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 30px;
-}
-#button-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 10%;
-}
-.info-ms {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: lightblue;
+/* Custom styles for Bootstrap dark theme - 深藍色配色 */
+:root {
+  --bs-body-bg: #0f172a;
+  --bs-body-color: #e5e7eb;
+  --bs-card-bg: #1e293b;
+  --bs-secondary-bg: #334155;
+  --bs-border-color: #475569;
 }
 
-@keyframes blink {
-    0% { opacity: 1; }
-    50% { opacity: 0; }
-    100% { opacity: 1; }
+body {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+}
+
+/* 漸變色標題 */
+.gradient-title {
+  background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  .blink {
-    animation: blink 1s infinite;
+  50% {
+    background-position: 100% 50%;
   }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Custom button styles */
+.btn-primary {
+  background-color: #8b5cf6;
+  border-color: #8b5cf6;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #7c3aed;
+  border-color: #7c3aed;
+  transform: translateY(-1px);
+  box-shadow: 0 0.25rem 0.5rem rgba(139, 92, 246, 0.4);
+}
+
+.btn-primary:active {
+  background-color: #6d28d9 !important;
+  border-color: #6d28d9 !important;
+}
+
+.btn-primary:disabled {
+  background-color: #475569;
+  border-color: #475569;
+  opacity: 0.6;
+}
+
+.btn-success {
+  transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0.25rem 0.5rem rgba(34, 197, 94, 0.4);
+}
+
+.btn-secondary {
+  background-color: #64748b;
+  border-color: #64748b;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #475569;
+  border-color: #475569;
+  transform: translateY(-1px);
+  box-shadow: 0 0.25rem 0.5rem rgba(100, 116, 139, 0.4);
+}
+
+.btn-secondary:active {
+  background-color: #334155 !important;
+  border-color: #334155 !important;
+}
+
+.btn-secondary:disabled {
+  background-color: #475569;
+  border-color: #475569;
+  opacity: 0.6;
+}
+
+.btn-danger {
+  transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0.25rem 0.5rem rgba(239, 68, 68, 0.4);
+}
+
+/* Form controls - 比父卡片亮一些 */
+.form-select,
+.form-control {
+  background-color: #334155 !important;
+  border-color: #475569 !important;
+  color: #e5e7eb !important;
+  transition: all 0.3s ease;
+}
+
+.form-select:hover,
+.form-control:hover {
+  border-color: #64748b !important;
+}
+
+.form-select:focus,
+.form-control:focus {
+  background-color: #3b4b63 !important;
+  border-color: #8b5cf6 !important;
+  box-shadow: 0 0 0 0.25rem rgba(139, 92, 246, 0.25);
+  color: #e5e7eb !important;
+}
+
+.form-select:disabled,
+.form-control:disabled {
+  background-color: #1e293b !important;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-select option {
+  background-color: #334155;
+  color: #e5e7eb;
+}
+
+/* Number input 樣式優化 */
+.form-control[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.form-control[type="number"]::-webkit-inner-spin-button,
+.form-control[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* 自定義 number input 的上下按鈕 */
+.form-control[type="number"] {
+  position: relative;
+}
+
+/* Card title 置中 */
+.card-title {
+  text-align: center;
+}
+
+/* Performance cards - 比父卡片亮一些且內容置中 */
+.performance-card {
+  background-color: #334155 !important;
+  border: 1px solid #475569;
+  text-align: center;
+}
+
+.performance-card .card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.performance-label {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.performance-value {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Status card - 比父卡片亮一些，內容靠左 */
+.status-card {
+  background-color: #334155 !important;
+  border: 1px solid #475569;
+}
+
+.status-card .card-body {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Table styles */
+.table-dark {
+  --bs-table-bg: #334155;
+  --bs-table-striped-bg: #3b4b63;
+  --bs-table-hover-bg: #475569;
+  --bs-table-border-color: #475569;
+}
+
+/* Details/Summary - 使用 Bootstrap Icons 的箭頭 */
+details summary {
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+  position: relative;
+}
+
+details summary > div {
+  flex: 1;
+  text-align: center;
+  margin-right: 1rem; /* 留出箭頭的空間 */
+}
+
+details summary::after {
+  content: "\F285"; /* Bootstrap icon chevron-right */
+  font-family: "bootstrap-icons";
+  transition: transform 0.3s ease;
+  display: inline-block;
+  font-size: 1rem;
+  color: #8b5cf6;
+  flex-shrink: 0; /* 防止箭頭被壓縮 */
+}
+
+details[open] summary::after {
+  transform: rotate(90deg);
+}
+
+details summary:hover::after {
+  color: #7c3aed;
+}
+
+details[open] > :not(summary) {
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading animation */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.spinner-grow {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Badge 樣式調整 */
+.badge.bg-primary {
+  background-color: #8b5cf6 !important;
+}
+
+/* 文字顏色調整 */
+.text-warning {
+  color: #fbbf24 !important;
+}
+
+.text-success {
+  color: #22c55e !important;
+}
+
+.text-info {
+  color: #3b82f6 !important;
+}
+
+.text-muted {
+  color: #9ca3af !important;
+}
+
+/* Form label 樣式 */
+.form-label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #e5e7eb;
+}
+
+.form-label i {
+  color: #8b5cf6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .h1,
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  .table {
+    font-size: 0.875rem;
+  }
+
+  .performance-value {
+    font-size: 1.5rem;
+  }
+
+  /* 在小螢幕上讓表單元素堆疊 */
+  .row.g-3 > [class*="col-"] {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* 確保 dark 模式下的卡片背景 */
+.bg-dark {
+  background-color: #1e293b !important;
+}
+
+.bg-secondary {
+  background-color: #334155 !important;
+}
+
+.border-secondary {
+  border-color: #475569 !important;
+}
